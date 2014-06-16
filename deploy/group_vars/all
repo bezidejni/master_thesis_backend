@@ -1,0 +1,12 @@
+# application config
+app_name: ips
+git_repo_url: https://github.com/appsembler/launcher.git
+git_repo_branch: master
+git_repo_dir: /opt/ips
+server_name: 
+venv_dir: /opt/venv
+
+# django static files
+django_media_dir: "{{git_repo_dir}}/ips/media"
+django_project_dir: "{{git_repo_dir}}/ips"
+django_static_dir: "{{git_repo_dir}}/ips/collected_static"

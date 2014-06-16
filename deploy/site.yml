@@ -1,0 +1,11 @@
+---
+# file: site.yml
+- hosts: server
+  remote_user: "{{remote_user}}"
+  gather_facts: false
+  roles:
+    - common
+    - pythondev
+    - postgresql
+    #- app_deployment
+    #- supervisor
