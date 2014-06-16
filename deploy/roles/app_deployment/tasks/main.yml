@@ -14,6 +14,9 @@
   pip: requirements='requirements.txt' virtualenv=/opt/venv chdir={{git_repo_dir}}
   tags: code
 
+- name: Copy the production settings file
+  copy: src=local_settings.py dest={{django_project_dir}}/ips owner=root group=root
+
 - name: Install gunicord
   pip: name=gunicorn virtualenv=/opt/venv chdir={{git_repo_dir}}
 
