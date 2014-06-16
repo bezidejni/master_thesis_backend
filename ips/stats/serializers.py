@@ -1,6 +1,6 @@
 from django.utils.timezone import datetime
 from rest_framework import serializers
-from .models import CPUInfo, NetworkInfo, DOMElementCount
+from .models import CPUInfo, NetworkInfo, DOMElementCount, Cookie
 
 
 class UnixEpochDateField(serializers.DateTimeField):
@@ -27,3 +27,8 @@ class NetworkInfoSerializer(serializers.ModelSerializer):
 class DOMElementCountSerializer(serializers.ModelSerializer):
     class Meta:
         model = DOMElementCount
+
+
+class CookieSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cookie

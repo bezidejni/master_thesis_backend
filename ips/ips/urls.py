@@ -1,14 +1,15 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from rest_framework import routers
-from stats.views import CPUInfoViewSet, NetworkInfoViewSet, DOMElementCountViewSet, HomeView
+from stats.views import CPUInfoViewSet, NetworkInfoViewSet, DOMElementCountViewSet, HomeView, CookieViewSet
 
 admin.autodiscover()
 
 router = routers.DefaultRouter()
-router.register('cpu-info', CPUInfoViewSet)
-router.register('network-info', NetworkInfoViewSet)
-router.register('dom-element-count', DOMElementCountViewSet)
+router.register('cpu', CPUInfoViewSet)
+router.register('network', NetworkInfoViewSet)
+router.register('dom', DOMElementCountViewSet)
+router.register('cookie', CookieViewSet)
 
 
 urlpatterns = patterns('',

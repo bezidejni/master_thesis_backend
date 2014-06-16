@@ -2,8 +2,8 @@ import json
 from django.db.models import Count
 from django.views.generic import TemplateView
 from rest_framework import viewsets
-from .models import CPUInfo, NetworkInfo, DOMElementCount
-from .serializers import CPUInfoSerializer, NetworkInfoSerializer, DOMElementCountSerializer
+from .models import CPUInfo, NetworkInfo, DOMElementCount, Cookie
+from .serializers import CPUInfoSerializer, NetworkInfoSerializer, DOMElementCountSerializer, CookieSerializer
 
 
 class HomeView(TemplateView):
@@ -50,6 +50,15 @@ class DOMElementCountViewSet(viewsets.ModelViewSet):
 class NetworkInfoViewSet(viewsets.ModelViewSet):
     queryset = NetworkInfo.objects.all()
     serializer_class = NetworkInfoSerializer
+
+    def get_serializer(self, instance=None, data=None,
+                       files=None, many=False, partial=False):
+        return self.serializer_class(instance, data, files, True, partial)
+
+
+class CookieViewSet(viewsets.ModelViewSet):
+    queryset = Cookie.objects.all()
+    serializer_class = CookieSerializer
 
     def get_serializer(self, instance=None, data=None,
                        files=None, many=False, partial=False):

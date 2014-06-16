@@ -26,3 +26,13 @@ class DOMElementCount(models.Model):
     element_name = models.CharField(max_length=30)
     count = models.IntegerField(default=0)
     timestamp = models.DateTimeField(auto_now_add=True)
+
+
+class Cookie(models.Model):
+    domain = models.URLField()
+    name = models.CharField(max_length=1000)
+    value = models.CharField(max_length=1000)
+    secure = models.BooleanField(default=False)
+    http_only = models.BooleanField(default=False)
+    session = models.BooleanField(default=False)
+    expiration_date = models.DateTimeField(blank=True, null=True)

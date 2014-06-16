@@ -53,4 +53,5 @@ coverage.xml
 docs/_build/
 
 # Vagrant files
-.vagrant/
+deploy/.vagrant/
+.idea/
