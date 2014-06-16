@@ -1,6 +1,6 @@
 # application config
 app_name: ips
-git_repo_url: https://github.com/appsembler/launcher.git
+git_repo_url: https://github.com/bezidejni/master_thesis_backend.git
 git_repo_branch: master
 git_repo_dir: /opt/ips
 server_name: 

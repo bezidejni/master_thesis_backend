@@ -18,6 +18,7 @@
     - python
     - g++
     - make
+    - libncurses-dev
 
 - name: Generate locales
   command: locale-gen hr_HR.UTF-8

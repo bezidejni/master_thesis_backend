@@ -7,5 +7,5 @@
     - common
     - pythondev
     - postgresql
-    #- app_deployment
-    #- supervisor
+    - app_deployment
+    - supervisor

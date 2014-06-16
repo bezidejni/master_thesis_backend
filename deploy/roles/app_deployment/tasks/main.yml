@@ -11,59 +11,35 @@
   tags: code
 
 - name: Create a virtual env and install app requirements
-  pip: requirements='requirements/production.txt' virtualenv=/opt/venv chdir={{git_repo_dir}}
+  pip: requirements='requirements.txt' virtualenv=/opt/venv chdir={{git_repo_dir}}
   tags: code
 
-- name: Install bower components
-  django_manage: >
-      command="bower_install -- --allow-root -f"
-      app_path={{django_project_dir}}
-      settings=launcher.settings.production
-      pythonpath={{django_project_dir}}
-      virtualenv={{venv_dir}}
-  environment: django_env_vars
-  tags: code
+- name: Install gunicord
+  pip: name=gunicorn virtualenv=/opt/venv chdir={{git_repo_dir}}
 
 - name: Run collectstatic
   django_manage: >
       command=collectstatic
       app_path={{django_project_dir}}
-      settings=launcher.settings.production
+      settings={{app_name}}.settings
       pythonpath={{django_project_dir}}
       virtualenv={{venv_dir}}
-  environment: django_env_vars
   tags: code
 
 - name: Run syncdb
   django_manage: >
       command=syncdb
       app_path={{django_project_dir}}
-      settings=launcher.settings.production
+      settings={{app_name}}.settings
       pythonpath={{django_project_dir}}
       virtualenv={{venv_dir}}
-  environment: django_env_vars
   tags: code
 
 - name: Run DB migrations
   django_manage: >
       command=migrate
       app_path={{django_project_dir}}
-      settings=launcher.settings.production
+      settings={{app_name}}.settings
       pythonpath={{django_project_dir}}
       virtualenv={{venv_dir}}
-  environment: django_env_vars
-  tags: code
-
-- name: Load fixtures
-  django_manage: >
-      command=loaddata
-      fixtures={{item}}
-      app_path={{django_project_dir}}
-      settings=launcher.settings.production
-      pythonpath={{django_project_dir}}
-      virtualenv={{venv_dir}}
-  with_items:
-    - admin_user.json
-    - sample_projects.json
-  environment: django_env_vars
   tags: code
