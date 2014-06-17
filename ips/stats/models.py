@@ -4,7 +4,6 @@ from model_utils import Choices
 
 
 class CPUInfo(models.Model):
-    url = models.URLField(blank=True)
     value = models.DecimalField(max_digits=6, decimal_places=3)
     timestamp = models.DateTimeField(default=datetime.now)
 
